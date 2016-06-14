@@ -21,7 +21,7 @@
     "url": "https://github.com/benhollander/rurnt/issues"
   },
   "homepage": "https://github.com/benhollander/rurnt",
-  "devDependencies": {
+  "dependencies": {
     "botkit": "^0.2.0",
     "concurrently": "^2.1.0",
     "redis": "^2.6.1"

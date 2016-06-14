@@ -3,7 +3,7 @@ var Botkit = require('botkit');
 
 // Botkit-based Redis store
 var Redis_Store = require('./redisStorage.js');
-var redisUrl = process.env.REDIS_URL ||"redis://127.0.0.1:6379";
+var redisUrl = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 var store = new Redis_Store({url: redisUrl});
 
 require('./env.js');
