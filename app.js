@@ -1,10 +1,14 @@
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit');
+var _ = require('lodash');
 
 // Botkit-based Redis store
 var Redis_Store = require('./redisStorage.js');
 var redisUrl = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 var store = new Redis_Store({url: redisUrl});
+
+// list(s) of words to use.
+var words = require('./words.js');
 
 try {
   require('./env.js');
@@ -101,7 +105,6 @@ controller.hears('^stop','direct_message',function(bot,message) {
   bot.rtm.close();
 });
 
-
 controller.on(['direct_message','mention','direct_mention'],function(bot,message) {
   bot.api.reactions.add({
     timestamp: message.ts,
@@ -109,13 +112,14 @@ controller.on(['direct_message','mention','direct_mention'],function(bot,message
     name: 'rurnt',
   },function(err) {
     if (err) { console.log(err) }
-    bot.reply(message,'I heard you loud and clear boss.');
+    bot.reply(message,'Ruin your favorite people, places, or things with the power of puns.');
+    words = words.sfw;
+    if (message.text !== 'sfw') {
+      words.concat(words.nsfw);
+    }
+    var responses = _.sampleSize(words, 2);
+    bot.reply(message,'Let\'s ruin your favorite ' + responses[0] + ' with your least favorite ' + responses[1]);
   });
-});
-
-
-controller.on('slash_command',function(bot,message) {
-  bot.replyPrivate(message, 'This is a private reply to the ' + message.command + ' slash command!');
 });
 
 controller.storage.teams.all(function(err,teams) {

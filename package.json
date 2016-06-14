@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Ruin your favorite people, places, and things through the power of puns.",
   "engines": {
-    "node" : "5.10.0"
+    "node": "5.10.0"
   },
   "main": "app.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "botkit": "^0.2.0",
     "concurrently": "^2.1.0",
+    "lodash": "^4.13.1",
     "redis": "^2.6.1"
   }
 }
