@@ -1,0 +1,25 @@
+{
+  "name": "rurnt",
+  "version": "0.0.1",
+  "description": "Ruin your favorite people, places, and things through the power of puns.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently 'redis-server' 'node app.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benhollander/rurnt"
+  },
+  "author": "Ben Hollander",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benhollander/rurnt/issues"
+  },
+  "homepage": "https://github.com/benhollander/rurnt",
+  "devDependencies": {
+    "botkit": "^0.2.0",
+    "concurrently": "^2.1.0",
+    "redis": "^2.6.1"
+  }
+}
