@@ -6,7 +6,13 @@ var Redis_Store = require('./redisStorage.js');
 var redisUrl = process.env.REDIS_URL || "redis://127.0.0.1:6379";
 var store = new Redis_Store({url: redisUrl});
 
-require('./env.js');
+try {
+  require('./env.js');
+} catch (e) {
+  if (e.code === 'MODULE_NOT_FOUND') {
+    console.log('Not using environment variables from env.js');
+  }
+}
 
 var port = process.env.PORT || process.env.port;
 if (!process.env.clientId || !process.env.clientSecret || !port) {
