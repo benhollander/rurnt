@@ -113,6 +113,11 @@ controller.on(['direct_message','mention','direct_mention'],function(bot,message
   });
 });
 
+
+controller.on('slash_command',function(bot,message) {
+  bot.replyPrivate(message, 'This is a private reply to the ' + message.command + ' slash command!');
+});
+
 controller.storage.teams.all(function(err,teams) {
 
   if (err) {
