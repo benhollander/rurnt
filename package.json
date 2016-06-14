@@ -2,10 +2,14 @@
   "name": "rurnt",
   "version": "0.0.1",
   "description": "Ruin your favorite people, places, and things through the power of puns.",
+  "engines": {
+    "node" : "5.10.0"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently 'redis-server' 'node app.js'"
+    "start": "node app.js",
+    "dev": "concurrently 'redis-server' 'node app.js'"
   },
   "repository": {
     "type": "git",
